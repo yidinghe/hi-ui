@@ -14,6 +14,7 @@ import android.widget.ScrollView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.yhe.hi.library.util.HiDisplayUtil;
 import com.yhe.hi.ui.R;
 import com.yhe.hi.ui.tab.common.IHiTabLayout;
 
@@ -96,7 +97,7 @@ public class HiTabBottomLayout extends FrameLayout implements IHiTabLayout<HiTab
         addBottomLine();
         addView(ll, flPrams);
 
-        fixContentView();
+        //fixContentView();
     }
 
     @Override
@@ -173,31 +174,31 @@ public class HiTabBottomLayout extends FrameLayout implements IHiTabLayout<HiTab
 
     private static final String TAG_TAB_BOTTOM = "TAG_TAB_BOTTOM";
 
-    /**
-     * 修复内容区域的底部Padding
-     */
-    private void fixContentView() {
-        if (!(getChildAt(0) instanceof ViewGroup)) {
-            return;
-        }
-        ViewGroup rootView = (ViewGroup) getChildAt(0);
-        ViewGroup targetView = HiViewUtil.findTypeView(rootView, RecyclerView.class);
-        if (targetView == null) {
-            targetView = HiViewUtil.findTypeView(rootView, ScrollView.class);
-        }
-        if (targetView == null) {
-            targetView = HiViewUtil.findTypeView(rootView, AbsListView.class);
-        }
-        if (targetView != null) {
-            targetView.setPadding(0, 0, 0, HiDisplayUtil.dp2px(tabBottomHeight, getResources()));
-            targetView.setClipToPadding(false);
-        }
-    }
-
-    public static void clipBottomPadding(ViewGroup targetView) {
-        if (targetView != null) {
-            targetView.setPadding(0, 0, 0, HiDisplayUtil.dp2px(tabBottomHeight));
-            targetView.setClipToPadding(false);
-        }
-    }
+//    /**
+//     * 修复内容区域的底部Padding
+//     */
+//    private void fixContentView() {
+//        if (!(getChildAt(0) instanceof ViewGroup)) {
+//            return;
+//        }
+//        ViewGroup rootView = (ViewGroup) getChildAt(0);
+//        ViewGroup targetView = HiViewUtil.findTypeView(rootView, RecyclerView.class);
+//        if (targetView == null) {
+//            targetView = HiViewUtil.findTypeView(rootView, ScrollView.class);
+//        }
+//        if (targetView == null) {
+//            targetView = HiViewUtil.findTypeView(rootView, AbsListView.class);
+//        }
+//        if (targetView != null) {
+//            targetView.setPadding(0, 0, 0, HiDisplayUtil.dp2px(tabBottomHeight, getResources()));
+//            targetView.setClipToPadding(false);
+//        }
+//    }
+//
+//    public static void clipBottomPadding(ViewGroup targetView) {
+//        if (targetView != null) {
+//            targetView.setPadding(0, 0, 0, HiDisplayUtil.dp2px(tabBottomHeight));
+//            targetView.setClipToPadding(false);
+//        }
+//    }
 }
